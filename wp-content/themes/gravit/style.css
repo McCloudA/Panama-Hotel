@@ -5,7 +5,7 @@ Author URI: http://twitter.com/fstiehle
 Description: Detailed, minimalistic and full responsive. With Gravit your content is the focus of the experience. Great typography, full-width featured images, no distractions: just let your readers focus on what really matters: your content. Get a preview here: http://gravit.tryand.net/. If you're enjoying gravit you might want to check out our other themes at: https://tryand.net/
 
 Tags: one-column, responsive-layout, post-formats, custom-menu, featured-images, sticky-post, translation-ready
-Version: 1.4
+Version: 1.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: gravit
@@ -245,6 +245,12 @@ img {
 .header-image {
 	padding-top:40px;
 	margin-bottom: 0;
+}
+.description {
+	font-size: 18px;
+	margin: 0 0 10px 0;
+	padding: 10px 0 20px 0;
+	border-bottom: 1px solid #f5f5f5;
 }
 
 /* =Text & basic elements
@@ -1634,6 +1640,13 @@ video {
 	.toggled .nav-menu {
 		display: block !important;
 	}
+	.description {
+		font-size: 14px;
+		line-height: 17px;
+		margin: 0;		
+		padding: 0;
+		padding-top: 10px;
+	}
 	.description-wrapper {
 		margin-top: 60px;
 		padding-bottom: 20px;
@@ -1670,7 +1683,7 @@ video {
 }
 
 @media screen and (max-width: 500px) {
-
+	
 	.bio .intro {
 		padding: 10px;
 		margin-bottom: 10px;
@@ -1731,11 +1744,7 @@ video {
 	.format-quote .entry-content {
 		font-size: 22px;
 		line-height: 30px;
-	}
-	.description {
-		font-size: 22px;
-		line-height: 28px;
-	}
+	}	
 	#comments,
 	.single-footer {
 		margin-top: 80px;

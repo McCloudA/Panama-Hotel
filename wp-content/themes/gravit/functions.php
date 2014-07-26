@@ -348,7 +348,7 @@ function gravit_styles_method() {
     $custom_css = "
         .site-info {
             color: {$footer_text_color};
-        }
+        }      
 
 		.post-symbol, .post-symbol a, #menu-toggle { 
 			color: {$icon_color}!important;
@@ -366,10 +366,40 @@ function gravit_styles_method() {
         	background-color: {$about_page_color}; 
         }";
 
+       if (false === get_theme_mod('show_icons')) {
+       		$custom_css .=	"
+       			.post-symbol {
+       				display: none !important;
+       			}
+       		";
+       	}
+
     wp_add_inline_style( 'gravit-style', $custom_css );
 }
 add_action( 'wp_enqueue_scripts', 'gravit_styles_method' );
 
+
+/* Display a update notice that can be dismissed */
+add_action('admin_notices', 'gravit_update_notice');
+function gravit_update_notice() {
+	global $current_user ;
+        $user_id = $current_user->ID;
+        /* Check that the user hasn't already clicked to ignore the message */
+	if ( ! get_user_meta($user_id, 'gravit_ignore_update_notice') ) {
+        echo '<div class="updated"><p>';
+        printf(__('<p><strong>Gravit has been updated to 1.5! Fixing a minor bug and introducing a new feature. Get the update notes <a target="_blank" href="https://twitter.com/tryandnet/status/491585489754144768">here.</a></strong></p><a class="skip button-primary" href="%1$s">Hide Notice</a>'), '?gravit_nag_update_ignore=0');
+        echo "</p></div>";
+	}
+}
+add_action('admin_init', 'gravit_nag_update_ignore');
+function gravit_nag_update_ignore() {
+	global $current_user;
+        $user_id = $current_user->ID;
+        /* If user clicks to ignore the notice, add that to their user meta */
+        if ( isset($_GET['gravit_nag_update_ignore']) && '0' == $_GET['gravit_nag_update_ignore'] ) {
+             add_user_meta($user_id, 'gravit_ignore_update_notice', 'true', true);
+	}
+}
 
 /* Display a notice that can be dismissed */
 add_action('admin_notices', 'gravit_admin_notice');

@@ -86,6 +86,28 @@ function gravit_customize_register( $wp_customize ) {
 		);
 	}
 
+
+
+	$wp_customize->add_section( 'global_options', array(
+    'title'          => 'Global Options',
+	) );
+
+	$wp_customize->add_setting( 'show_icons', array(
+	'default'        => true,
+	'transport'  =>  'postMessage'
+	) );
+
+	$wp_customize->add_control(
+	'show_icons',
+	array(
+	    'section'   => 'global_options',
+	    'label'     => 'Show Post Icons?',
+	    'type'      => 'checkbox'
+	     )
+	 );
+ 
+
+
 }
 add_action( 'customize_register', 'gravit_customize_register' );
 

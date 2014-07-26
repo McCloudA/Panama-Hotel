@@ -31,6 +31,11 @@
 				<h1 class="site-title"><a title="<?php bloginfo( 'name' ); ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 			<?php } ?>			
 			
+			<?php if ( get_bloginfo( 'description' ) ) { ?>				
+				<h2 class="description">
+					<?php bloginfo( 'description' ); ?>
+				</h2>				
+			<?php } ?>
 			</div>
 
 	  	<?php if ( has_nav_menu( 'primary' ) ) { ?>
@@ -51,6 +56,7 @@
 						} else { ?>
 							<h1 class="site-title"><a title="<?php bloginfo( 'name' ); ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 						<?php } ?>
+					
 			</div>
 
 	  				<div id="menu-toggle">
@@ -62,6 +68,14 @@
 						<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 				
 					</nav><!-- #site-navigation-mobile -->
+
+					<?php if ( get_bloginfo( 'description' ) ) { ?>				
+				<h2 class="description">
+					<?php bloginfo( 'description' ); ?>
+				</h2>				
+			<?php } ?>
+
+					
 	  	</div>
 
 		<?php } ?>
